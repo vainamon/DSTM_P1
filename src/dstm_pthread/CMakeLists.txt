@@ -1,0 +1,11 @@
+IF (UNIX)
+  SET (LLVM_ON_UNIX 1)
+ENDIF(UNIX)
+
+ADD_SUBDIRECTORY (pass)
+
+INCLUDE (LLVM-toolchain)
+
+ADD_LIBRARY (dstm_pthread dstm_pthread.cpp)
+
+INSTALL (TARGETS dstm_pthread DESTINATION ${CMAKE_INSTALL_PREFIX})

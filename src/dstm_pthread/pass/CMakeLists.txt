@@ -1,0 +1,1 @@
+ADD_LLVM_LIBRARY (LLVMPthreadCreateReplacePass PthreadCreateReplacePass.cpp)

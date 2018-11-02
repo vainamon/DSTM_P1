@@ -1,0 +1,13 @@
+INCLUDE_DIRECTORIES($ENV{GASNET_HOME}/include)
+INCLUDE_DIRECTORIES($ENV{GASNET_HOME}/include/ibv-conduit)
+
+LINK_DIRECTORIES($ENV{GASNET_HOME}/lib)
+LINK_DIRECTORIES(/usr/local/lib/)
+
+SET (GASNET_LIBS gasnet-ibv-par ibverbs rt)
+SET (GASNET_DEFINES "-DGASNET_PAR -DGASNET_CONDUIT_IBV -D_REENTRANT")
+SET (GASNET_OPT_CFLAGS "-O3 -pipe --param max-inline-insns-single=35000 --param inline-unit-growth=10000 --param large-function-growth=200000 -Winline -DNDEBUG")
+
+SET (GASNET_CFLAGS "${GASNET_DEFINES} ${GASNET_OPT_CFLAGS}")
+
+SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GASNET_CFLAGS}")
